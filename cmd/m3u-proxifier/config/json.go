@@ -18,22 +18,22 @@ func ParseJSON(r io.Reader) (*ConfigJSON, error) {
 		return nil, err
 	}
 
-	raw := new(map[string]interface{})
+	var raw map[string]interface{}
 
-	err = json.Unmarshal(data, raw)
+	err = json.Unmarshal(data, &raw)
 	if err != nil {
 		return nil, err
 	}
 
 	// Parse basic types
 	res := ConfigJSON{
-		Old:   (*raw)["old"].(string),
-		New:   (*raw)["new"].(string),
-		Proxy: (*raw)["proxy"].(string),
+		Old:   raw["old"].(string),
+		New:   raw["new"].(string),
+		Proxy: raw["proxy"].(string),
 	}
 
 	// Parse each string containing URL to URL type
-	if tmp, err := url.Parse((*raw)["location"].(string)); err != nil {
+	if tmp, err := url.Parse(raw["location"].(string)); err != nil {
 		return nil, err
 	} else {
 		res.Location = tmp
