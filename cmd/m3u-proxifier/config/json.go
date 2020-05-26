@@ -7,12 +7,12 @@ import (
 	"net/url"
 )
 
-type ConfigJSON struct {
+type Json struct {
 	Location        *url.URL
 	Proxy, Old, New string
 }
 
-func ParseJSON(r io.Reader) (*ConfigJSON, error) {
+func ParseJSON(r io.Reader) (*Json, error) {
 	data, err := ioutil.ReadAll(r)
 	if err != nil {
 		return nil, err
@@ -26,7 +26,7 @@ func ParseJSON(r io.Reader) (*ConfigJSON, error) {
 	}
 
 	// Parse basic types
-	res := ConfigJSON{
+	res := Json{
 		Old:   raw["old"].(string),
 		New:   raw["new"].(string),
 		Proxy: raw["proxy"].(string),
