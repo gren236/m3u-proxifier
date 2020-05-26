@@ -1,0 +1,6 @@
+{
+  "location": "http://m3u.example.com",
+  "proxy": "192.168.1.42:7777",
+  "old": "/test/file.m3u",
+  "new": "/test/new_file.m3u"
+}
