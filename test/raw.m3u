@@ -1,0 +1,35 @@
+#EXTM3U
+#EXTINF:0,Some stream 1
+udp://@185.26.4.22:4235
+#EXTINF:0,Some stream 2
+udp://@185.26.4.31:4235
+#EXTINF:0,Some stream 3
+udp://@185.26.3.38:4235
+#EXTINF:0,Some stream 4
+udp://@185.26.4.1:4235
+#EXTINF:0,Some stream 5
+udp://@185.26.4.3:4235
+#EXTINF:0,Some stream 6
+udp://@185.26.4.30:4235
+#EXTINF:0,Some stream 7
+udp://@185.26.4.29:4235
+#EXTINF:0,Some stream 8
+udp://@185.26.4.16:4235
+#EXTINF:0,Some stream 9
+udp://@185.26.4.26:4235
+#EXTINF:0,Some stream 10
+udp://@185.26.3.34:4235
+#EXTINF:0,Some stream 11
+udp://@185.26.4.5:4235
+#EXTINF:0,Some stream 12
+udp://@185.26.4.4:4235
+#EXTINF:0,Some stream 13
+udp://@185.26.4.25:4235
+#EXTINF:0,Some stream 14
+udp://@185.26.4.6:4235
+#EXTINF:0,Some stream 15
+udp://@185.26.4.73:4235
+#EXTINF:0,Some stream 16
+udp://@185.26.3.31:4235
+#EXTINF:0,Some stream 17
+udp://@185.26.4.80:4235

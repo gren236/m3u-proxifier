@@ -1,0 +1,65 @@
+﻿#EXTM3U
+#EXTINF:0,Some stream 19
+http://192.168.1.42:7777/udp/185.26.4.22:4235
+#EXTINF:0,Some stream 20
+http://192.168.1.42:7777/udp/185.26.4.31:4235
+#EXTINF:0,Some stream 21
+http://192.168.1.42:7777/udp/185.26.3.38:4235
+#EXTINF:0,Some stream 22
+http://192.168.1.42:7777/udp/185.26.4.1:4235
+#EXTINF:0,Some stream 23
+http://192.168.1.42:7777/udp/185.26.4.3:4235
+#EXTINF:0,Some stream 24
+http://192.168.1.42:7777/udp/185.26.4.30:4235
+#EXTINF:0,Some stream 25
+http://192.168.1.42:7777/udp/185.26.4.29:4235
+#EXTINF:0,Some stream 26
+http://192.168.1.42:7777/udp/185.26.4.16:4235
+#EXTINF:0,Some stream 27
+http://192.168.1.42:7777/udp/185.26.4.26:4235
+#EXTINF:0,Some stream 28
+http://192.168.1.42:7777/udp/185.26.3.34:4235
+#EXTINF:0,Some stream 29
+http://192.168.1.42:7777/udp/185.26.4.5:4235
+#EXTINF:0,Some stream 30
+http://192.168.1.42:7777/udp/185.26.4.4:4235
+#EXTINF:0,Some stream 31
+http://192.168.1.42:7777/udp/185.26.4.25:4235
+#EXTINF:0,Some stream 32
+http://192.168.1.42:7777/udp/185.26.4.6:4235
+#EXTINF:0,Some stream 33
+http://192.168.1.42:7777/udp/185.26.4.73:4235
+#EXTINF:0,Some stream 34
+http://192.168.1.42:7777/udp/185.26.3.31:4235
+#EXTINF:0,Some stream 35
+http://192.168.1.42:7777/udp/185.26.4.80:4235
+#EXTINF:0,Some stream 36
+http://192.168.1.42:7777/udp/185.26.4.38:4235
+#EXTINF:0,Some stream 37
+http://192.168.1.42:7777/udp/185.26.3.84:4235
+#EXTINF:0,Some stream 38
+http://192.168.1.42:7777/udp/185.26.4.27:4235
+#EXTINF:0,Some stream 39
+http://192.168.1.42:7777/udp/185.26.4.20:4235
+#EXTINF:0,Some stream 40
+http://192.168.1.42:7777/udp/185.26.4.15:4235
+#EXTINF:0,Some stream 41
+http://192.168.1.42:7777/udp/185.26.3.53:4235
+#EXTINF:0,Some stream 42
+http://192.168.1.42:7777/udp/185.26.4.17:4235
+#EXTINF:0,Some stream 43
+http://192.168.1.42:7777/udp/185.26.3.50:4235
+#EXTINF:0,Some stream 44
+http://192.168.1.42:7777/udp/185.26.4.74:4235
+#EXTINF:0,Some stream 45
+http://192.168.1.42:7777/udp/185.26.4.75:4235
+#EXTINF:0,Some stream 46
+http://192.168.1.42:7777/udp/185.26.3.69:4235
+#EXTINF:0,Some stream 47
+http://192.168.1.42:7777/udp/185.26.4.23:4235
+#EXTINF:0,Some stream 48
+http://192.168.1.42:7777/udp/185.26.4.32:4235
+#EXTINF:0,Some stream 49
+http://192.168.1.42:7777/udp/185.26.4.79:4235
+#EXTINF:0,Some stream 50
+http://192.168.1.42:7777/udp/185.26.3.52:4235

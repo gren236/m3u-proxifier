@@ -4,12 +4,10 @@ import (
 	"encoding/json"
 	"io"
 	"io/ioutil"
-	"net/url"
 )
 
 type Json struct {
-	Location        *url.URL
-	Proxy, Old, New string
+	Location, Proxy, Old, New string
 }
 
 func ParseJSON(r io.Reader) (*Json, error) {
@@ -18,26 +16,12 @@ func ParseJSON(r io.Reader) (*Json, error) {
 		return nil, err
 	}
 
-	var raw map[string]interface{}
+	res := new(Json)
 
-	err = json.Unmarshal(data, &raw)
+	err = json.Unmarshal(data, res)
 	if err != nil {
 		return nil, err
 	}
 
-	// Parse basic types
-	res := Json{
-		Old:   raw["old"].(string),
-		New:   raw["new"].(string),
-		Proxy: raw["proxy"].(string),
-	}
-
-	// Parse each string containing URL to URL type
-	if tmp, err := url.Parse(raw["location"].(string)); err != nil {
-		return nil, err
-	} else {
-		res.Location = tmp
-	}
-
-	return &res, nil
+	return res, nil
 }

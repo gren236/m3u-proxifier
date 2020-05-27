@@ -16,3 +16,6 @@
 
 # IDE
 .idea
+
+# Generated test data
+test/gen_*

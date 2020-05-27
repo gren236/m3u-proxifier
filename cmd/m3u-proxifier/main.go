@@ -14,11 +14,11 @@ func main() {
 	flag.Parse()
 
 	if *config == "" {
-		fmt.Fprintln(os.Stderr, "No configuration provided!")
+		fmt.Fprintf(os.Stderr, "Error: %s!\n", "no configuration provided")
 		return
 	}
 
 	if err := cmd.Handle(*config); err != nil {
-		fmt.Fprintln(os.Stderr, err)
+		fmt.Fprintf(os.Stderr, "Error: %s!\n", err)
 	}
 }
