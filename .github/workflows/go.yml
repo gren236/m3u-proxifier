@@ -37,10 +37,10 @@ jobs:
       run: go build -v ./cmd/m3u-proxifier/
 
     - name: Archive binary artifact
-        uses: actions/upload-artifact@v1
-        with:
-          name: m3u-proxifier_linux
-          path: m3u-proxifier
+      uses: actions/upload-artifact@v1
+      with:
+        name: m3u-proxifier_linux
+        path: m3u-proxifier
 
 #     - name: Test
 #       run: go test -v .
