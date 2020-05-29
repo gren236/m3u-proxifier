@@ -3,6 +3,7 @@ package cmd
 import (
 	"github.com/gren236/m3u-proxifier/cmd/m3u-proxifier/config"
 	"github.com/gren236/m3u-proxifier/pkg/playlist"
+	"io"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -41,19 +42,31 @@ func Handle(conf string) error {
 	}
 	defer proxPl.Close()
 
-	// Open the old playlist.
-	oldPl, err := playlist.LoadLocal(jconf.Old)
-	if err != nil {
-		return err
-	}
-	defer oldPl.Close()
+	if jconf.Old != "" {
+		// Open the old playlist.
+		oldPl, err := playlist.LoadLocal(jconf.Old)
+		if err != nil {
+			return err
+		}
+		defer oldPl.Close()
 
-	// Create a new file with merged entries.
-	newPl, err := oldPl.Merge(proxPl, jconf.New)
-	if err != nil {
-		return err
-	}
-	defer newPl.Close()
+		// Create a new file with merged entries.
+		newPl, err := oldPl.Merge(proxPl, jconf.New)
+		if err != nil {
+			return err
+		}
+		defer newPl.Close()
+	} else {
+		// Save playlist permanently
+		newFile, err := os.OpenFile(jconf.New, os.O_WRONLY | os.O_CREATE, 0775)
+		if err != nil {
+			return err
+		}
+		defer newFile.Close()
 
+		if _, err := io.Copy(newFile, proxPl); err != nil {
+			return err
+		}
+	}
 	return nil
 }
