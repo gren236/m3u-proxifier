@@ -16,7 +16,7 @@ This command will create a binary inside the current working directory.
 
 This tool receives a single command parameter `--config`. Pass a valid configuration JSON file to the executable like this:
 ```bash
-m3u-profiler --config=/some/dir/config.json
+m3u-proxifier --config=/some/dir/config.json
 ```
 It is strictly recommended passing an absolute path to the config as there might be some unexpected behavior using relative paths. Also, it would be wise to use absolute paths inside the config JSON as well.
 
