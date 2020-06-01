@@ -4,9 +4,12 @@ import (
 	"bufio"
 	"fmt"
 	"io"
+	"io/ioutil"
+	"net/http"
 	"net/url"
 	"os"
 	"regexp"
+	"time"
 )
 
 const M3U_SIGN string = `#EXTM3U`
@@ -189,12 +192,46 @@ func LoadLocal(path string) (*Playlist, error) {
 }
 
 func LoadRemote(rawLoc string) (*Playlist, error) {
-	// TODO Send HTTP request
-	// TODO Download the file
-	// TODO Check if file is M3U playlist
-	// TODO Return playlist
+	// Send HTTP request
+	client := http.Client{
+		Timeout: 10 * time.Second,
+	}
 
-	return &Playlist{}, nil
+	req, err := http.NewRequest("GET", rawLoc, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	resp, err := client.Do(req)
+	if err != nil {
+		return nil, err
+	}
+	defer resp.Body.Close()
+
+	// Download the file
+	tmp, err := ioutil.TempFile("", "m3u-proxifier_")
+	if err != nil {
+		return nil, err
+	}
+
+	_, err = io.Copy(tmp, resp.Body)
+	if err != nil {
+		return nil, err
+	}
+
+	// Check if file is M3U playlist
+	tmp.Seek(0, io.SeekStart) // Set file pointer offset to zero after writing
+	if !isM3U(tmp) {
+		return nil, Error("file is not an M3U playlist")
+	}
+
+	// Return playlist
+	res, err := New(tmp.Name())
+	if err != nil {
+		return nil, err
+	}
+
+	return res, nil
 }
 
 func isM3U(r io.ReadSeeker) bool {
