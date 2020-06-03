@@ -13,6 +13,7 @@ import (
 )
 
 const M3U_SIGN string = `#EXTM3U`
+const COPY_SIGN string = "(copy)"
 
 var AddrRegexp *regexp.Regexp = regexp.MustCompile(`^.*://.*@(.*)$`)
 
@@ -99,14 +100,17 @@ func (p *Playlist) Merge(new *Playlist, resFileName string) (*Playlist, error) {
 	resW := bufio.NewWriter(resPl)
 
 	// Map to check for new entries
-	chk := make(map[string]bool)
+	chkAddr := make(map[string]bool)
+	// Map to check for description copies
+	chkDesc := make(map[string]bool)
 
 	scnr := bufio.NewScanner(p)
 	for scnr.Scan() {
 		line := scnr.Text()
 
-		// If the line does not contain address, write it as-is
+		// If the line does not contain address, write it as-is and add to description map
 		if line[:1] == "#" {
+			chkDesc[line] = true
 			_, err := resW.Write([]byte(line + "\n"))
 			if err != nil {
 				return nil, err
@@ -115,7 +119,7 @@ func (p *Playlist) Merge(new *Playlist, resFileName string) (*Playlist, error) {
 		}
 
 		// If line is address, add it to map
-		chk[line] = true
+		chkAddr[line] = true
 
 		_, err := resW.Write([]byte(line + "\n"))
 		if err != nil {
@@ -137,14 +141,19 @@ func (p *Playlist) Merge(new *Playlist, resFileName string) (*Playlist, error) {
 		}
 
 		// If line is not present in map, write it to the file
-		if _, ok := chk[line]; !ok {
+		if _, ok := chkAddr[line]; !ok {
+			// If description like this is present in map, mark it as copy
+			if _, ok := chkDesc[descBuf]; ok {
+				descBuf = descBuf + " " + COPY_SIGN
+			}
+
 			_, err := resW.Write([]byte(descBuf + "\n" + line + "\n"))
 			if err != nil {
 				return nil, err
 			}
 
 			// Write it to the map to avoid duplications
-			chk[line] = true
+			chkAddr[line] = true
 		}
 	}
 
